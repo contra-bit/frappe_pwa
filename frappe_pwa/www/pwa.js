@@ -1,10 +1,3 @@
-/*!
- * Frappe PWA (https://github.com/Monogramm/frappe_pwa)
- * Copyright (c) 2021 Monogramm
- * Licensed under AGPL v3 (https://github.com/Monogramm/frappe_pwa/blob/master/LICENSE)
- */
-
-
 function showPrompt(buttonText, messageText, f) {
     const $btn = $(`<button class="pwa-next-action"><span>${__(buttonText)}</span></button>`);
     const next_action_container = $(`<div class="pwa-next-action-container"></div>`);
@@ -73,28 +66,6 @@ if ('serviceWorker' in navigator) {
                     // Registration was successful
                     console.log('[PWA] ServiceWorker registration successful with scope: ' + registration.scope);
 
-                    if (window.vapidPublicKey) {
-                        console.log('[PWA] Subscribing to push notifications');
-
-                        registration.pushManager.subscribe({
-                            userVisibleOnly: true,
-                            applicationServerKey: window.vapidPublicKey
-                        }).then(
-                            function (pushSubscription) {
-                                console.log(pushSubscription.subscriptionId);
-                                console.log(pushSubscription.endpoint);
-                                // The push subscription details needed by the application
-                                // server are now available, and can be sent to it using,
-                                // for example, an XMLHttpRequest.
-                            }, function (error) {
-                                // During development it often helps to log errors to the
-                                // console. In a production environment it might make sense to
-                                // also report information about errors back to the
-                                // application server.
-                                console.log(error);
-                            }
-                        );
-                    }
                 }, function (err) {
                     // registration failed :(
                     console.log('[PWA] ServiceWorker registration failed: ', err);
@@ -189,3 +160,13 @@ if ('serviceWorker' in navigator) {
 } else {
     console.warn('[PWA] No Service Worker support on your device');
 }
+
+// if ("serviceWorker" in navigator) {
+//     window.addEventListener("load", function() {
+//       navigator.serviceWorker
+//         .register("/sw.js")
+//         .then(res => console.log("service worker registered"))
+//         .catch(err => console.log("service worker not registered", err));
+//     });
+//   }
+  

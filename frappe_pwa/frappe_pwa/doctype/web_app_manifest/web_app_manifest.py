@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-# Copyright (c) 2021, Monogramm and contributors
-# For license information, please see license.txt
-
 from __future__ import unicode_literals
 import frappe
 
@@ -12,9 +8,11 @@ class WebAppManifest(Document):
     def on_update(self):
         """clear cache"""
         frappe.clear_cache(user='Guest')
+        frappe.clear_cache()
 
-        from frappe.website.render import clear_cache
-        clear_cache()
+        frappe.cache_manager.clear_global_cache()
+        # from frappe.website.render import clear_cache
+        # clear_cache()
 
 
 @frappe.whitelist()

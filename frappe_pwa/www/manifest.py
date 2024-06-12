@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-# Copyright (c) 2021, Monogramm and Contributors
-# See license.txt
-
 from __future__ import unicode_literals
 
 import json
@@ -32,8 +28,48 @@ def get_context(context):
     context.icons = frappe.get_all("Web App Manifest Icon", fields=['src', 'sizes', 'type'], filters={
         "parenttype": "Web App Manifest", "parent": pwa_manifest.name})
     if not context.icons:
-        context.icons = [{"src": "/assets/frappe/images/favicon.png",
-                          "sizes": "128x128", "type": "image/png"}]
+        context.icons = [
+            {
+                "src": "/assets/frappe_pwa/images/icon-72x72.png",
+                "sizes": "72x72", 
+                "type": "image/png"
+            },
+            {
+                "src": "/assets/frappe_pwa/images/icon-96x96.png",
+                "sizes": "96x96", 
+                "type": "image/png"
+            },
+            {
+                "src": "/assets/frappe_pwa/images/icon-128x128.png",
+                "sizes": "128x128", 
+                "type": "image/png"
+            },
+            {
+                "src": "/assets/frappe_pwa/images/icon-144x144.png",
+                "sizes": "144x144", 
+                "type": "image/png"
+            },
+            {
+                "src": "/assets/frappe_pwa/images/icon-152x152.png",
+                "sizes": "152x152", 
+                "type": "image/png"
+            },
+            {
+                "src": "/assets/frappe_pwa/images/icon-192x192.png",
+                "sizes": "192x192", 
+                "type": "image/png"
+            },
+            {
+                "src": "/assets/frappe_pwa/images/icon-384x384.png",
+                "sizes": "384x384", 
+                "type": "image/png"
+            },
+            {
+                "src": "/assets/frappe_pwa/images/icon-512x512.png",
+                "sizes": "512x512", 
+                "type": "image/png"
+            },
+        ]
     else:
         # Remove optional fields at None
         for i in context.icons:

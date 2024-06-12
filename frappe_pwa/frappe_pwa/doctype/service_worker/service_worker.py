@@ -8,6 +8,7 @@ from frappe.model.document import Document
 
 
 class ServiceWorker(Document):
+	@frappe.whitelist()
 	def generate_vapid_key(self, event="vapid_progress_bar"):
 		frappe.publish_realtime(event, {"progress": "0"}, user=frappe.session.user)
 
